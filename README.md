@@ -1,7 +1,7 @@
 # semanatec_FJ2025_evidencia
 Evidence of the project
 
-1. Packman.py - Dongju Mun(A01712119)
+1. Pacman.py - Dongju Mun(A01712119)
 
 I worked on the branch "A01712119_Pacman"
 
