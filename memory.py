@@ -9,9 +9,13 @@ Exercises:
 5. Use letters instead of tiles.
 """
 
-from random import *
-from turtle import *
-
+from random import shuffle
+from turtle import goto, up, down, color, clear
+from turtle import setup, begin_fill, forward
+from turtle import left, end_fill, stamp
+from turtle import shape, write, update, ontimer
+from turtle import addshape, hideturtle
+from turtle import tracer, onscreenclick, done
 from freegames import path
 
 car = path('car.gif')
@@ -20,23 +24,23 @@ state = {'mark': None}
 hide = [True] * 36
 pairs = 0
 
+
 def show_pairs():
     """Show how many pairs have been revealed"""
     up()
     goto(-375, 170)
     color('blue')
-    write('Pairs: ' + str(pairs), 
-    font=('Arial', 30, 'normal'))
+    write('Pairs: ' + str(pairs), font=('Arial', 30, 'normal'))
 
 
 def draw_ending():
-    """Display message when all pairs 
-    have been revealed"""
+    """Display message when all pairs
+        have been revealed"""
     up()
     goto(-250, 210)
     color('red')
-    write('Congratulations! You found all the pairs', 
-    font=('Arial', 30, 'normal'))
+    write('Congratulations! You found all the pairs',
+          font=('Arial', 30, 'normal'))
 
 
 def square(x, y):
@@ -66,11 +70,10 @@ def tap(x, y):
     """Update mark and hidden tiles based on tap."""
     spot = index(x, y)
     mark = state['mark']
-    global pairs 
+    global pairs
 
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
         state['mark'] = spot
-        
     else:
         hide[spot] = False
         hide[mark] = False
@@ -105,6 +108,7 @@ def draw():
 
     update()
     ontimer(draw, 100)
+
 
 shuffle(tiles)
 setup(850, 520, 370, 0)
