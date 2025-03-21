@@ -9,22 +9,31 @@ Exercises
 5. Make the ghosts smarter.
 """
 
-from random import choice
-import turtle
+from random import choice  # Import choice for random ghost movement
+import turtle  # Import turtle for graphics
+from freegames import floor, vector  # Import helper and vector for movement
 
-from freegames import floor, vector
-
+# Global state dictionary to track the game score
 state = {'score': 0}
-path = turtle.Turtle(visible=False)
-writer = turtle.Turtle(visible=False)
+
+# Turtle objects for drawing
+path = turtle.Turtle(visible=False)  # Used to draw the maze
+writer = turtle.Turtle(visible=False)  # Used to display the score
+
+# Pacman's movement direction
 aim = vector(5, 0)
+
+# Initial position of Pacman
 pacman = vector(-40, -80)
+
+# List of ghosts with their starting positions and movement directions
 ghosts = [
     [vector(-180, 160), vector(5, 0)],
     [vector(-180, -160), vector(0, 5)],
     [vector(100, 160), vector(0, -5)],
     [vector(100, -160), vector(-5, 0)],
 ]
+# Maze layout: 0 represents walls, 1 represents paths with dots
 # fmt: off
 tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -164,17 +173,22 @@ def change(x, y):
         aim.y = y
 
 
+# Set up the game window
 turtle.setup(420, 420, 370, 0)
 turtle.hideturtle()
 turtle.tracer(False)
 writer.goto(160, 160)
 writer.color('white')
 writer.write(state['score'])
+
+# Listen for keyboard inputs
 turtle.listen()
 turtle.onkey(lambda: change(5, 0), 'Right')
 turtle.onkey(lambda: change(-5, 0), 'Left')
 turtle.onkey(lambda: change(0, 5), 'Up')
 turtle.onkey(lambda: change(0, -5), 'Down')
+
+# Initialize game world and movement
 world()
 move()
 turtle.done()
