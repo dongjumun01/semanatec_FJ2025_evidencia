@@ -20,6 +20,10 @@ state = {'score': 0}
 path = turtle.Turtle(visible=False)  # Used to draw the maze
 writer = turtle.Turtle(visible=False)  # Used to display the score
 
+point = turtle.Turtle(visible=False)  # New turtle for points
+point.speed(0)  # No animation
+point.up()  # Lift pen to move it
+
 # Pacman's movement direction
 aim = vector(5, 0)
 
@@ -112,9 +116,16 @@ def world():
             square(x, y)
 
             if tile == 1:
-                path.up()
-                path.goto(x + 10, y + 10)
-                path.dot(2, 'white')
+                # 2. Changing the shape and color of the points
+                point.goto(x + 6, y + 6)  # Adjust position
+                point.down()
+                point.color('green')  # Change color of points
+                point.begin_fill()
+                for _ in range(4):  # Draw a small square for points
+                    point.forward(8)
+                    point.left(90)
+                point.end_fill()
+                point.up()  # Lift the pen to prevent unwanted lines
 
 
 def move():
