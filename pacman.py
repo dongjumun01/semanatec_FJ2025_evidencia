@@ -99,8 +99,9 @@ def valid(point):
 
 def world():
     """Draw world using path."""
-    turtle.bgcolor('black')
-    path.color('blue')
+    # 1. Changing the board's color
+    turtle.bgcolor('red')
+    path.color('black')
 
     for index in range(len(tiles)):
         tile = tiles[index]
