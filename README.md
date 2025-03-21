@@ -31,3 +31,34 @@ Changed the points' shape to square and their color to green.
 
 Changed the speed of the ghosts by increasing their magnitude of the movement and 
 making them move 50 milliseconds faster
+
+2. Memory.py - Ximena Pérez Escalante(A01751827)
+
+I worked on the branch "A01751827_Memory"
+
+Commits:
+
+- Add original Memory file
+
+Added memory.py of freegame.
+
+- Update width and height and add show_pairs function
+
+Changed the resolution of the canvas and added a function to show the number of 
+revealed pairs.
+
+- Add function to show how many pairs have been revealed
+
+Added draw_ending function.
+
+- Update number of tiles to a 6x6 grid
+
+Adjusted the size of the squares to fit the grid.
+
+- Update code to fit PEP8 standards.
+
+Adjusted the code using flake8. 
+
+- Add .gitignore
+
+Added .gitignore because of a previous .DS_Store file present on my branch.
