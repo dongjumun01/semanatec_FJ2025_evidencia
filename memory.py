@@ -28,6 +28,17 @@ def show_pairs():
     write('Pairs: ' + str(pairs), 
     font=('Arial', 30, 'normal'))
 
+
+def draw_ending():
+    """Display message when all pairs 
+    have been revealed"""
+    up()
+    goto(-250, 210)
+    color('red')
+    write('Congratulations! You found all the pairs', 
+    font=('Arial', 30, 'normal'))
+
+
 def square(x, y):
     """Draw white square with black outline at (x, y)."""
     up()
@@ -89,6 +100,8 @@ def draw():
         goto(x + 2, y)
         color('black')
         write(tiles[mark], font=('Arial', 30, 'normal'))
+    if pairs == 32:
+        draw_ending()
 
     update()
     ontimer(draw, 100)
