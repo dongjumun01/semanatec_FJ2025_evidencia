@@ -155,11 +155,13 @@ def move():
         if valid(point + course):
             point.move(course)
         else:
+            # 3. Making the ghosts go faster
+            # Increasing the magnitude of their movement
             options = [
-                vector(5, 0),
-                vector(-5, 0),
-                vector(0, 5),
-                vector(0, -5),
+                vector(20, 0),
+                vector(-20, 0),
+                vector(0, 20),
+                vector(0, -20),
             ]
             plan = choice(options)
             course.x = plan.x
@@ -174,8 +176,8 @@ def move():
     for point, course in ghosts:
         if abs(pacman - point) < 20:
             return
-
-    turtle.ontimer(move, 100)
+    # Move every 50 milliseconds (faster)
+    turtle.ontimer(move, 50)
 
 
 def change(x, y):
