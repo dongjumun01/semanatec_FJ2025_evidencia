@@ -10,13 +10,13 @@ Exercises
 """
 
 from random import choice
-from turtle import *
+import turtle
 
 from freegames import floor, vector
 
 state = {'score': 0}
-path = Turtle(visible=False)
-writer = Turtle(visible=False)
+path = turtle.Turtle(visible=False)
+writer = turtle.Turtle(visible=False)
 aim = vector(5, 0)
 pacman = vector(-40, -80)
 ghosts = [
@@ -90,7 +90,7 @@ def valid(point):
 
 def world():
     """Draw world using path."""
-    bgcolor('black')
+    turtle.bgcolor('black')
     path.color('blue')
 
     for index in range(len(tiles)):
@@ -112,7 +112,7 @@ def move():
     writer.undo()
     writer.write(state['score'])
 
-    clear()
+    turtle.clear()
 
     if valid(pacman + aim):
         pacman.move(aim)
@@ -126,9 +126,9 @@ def move():
         y = 180 - (index // 20) * 20
         square(x, y)
 
-    up()
-    goto(pacman.x + 10, pacman.y + 10)
-    dot(20, 'yellow')
+    turtle.up()
+    turtle.goto(pacman.x + 10, pacman.y + 10)
+    turtle.dot(20, 'yellow')
 
     for point, course in ghosts:
         if valid(point + course):
@@ -144,17 +144,17 @@ def move():
             course.x = plan.x
             course.y = plan.y
 
-        up()
-        goto(point.x + 10, point.y + 10)
-        dot(20, 'red')
+        turtle.up()
+        turtle.goto(point.x + 10, point.y + 10)
+        turtle.dot(20, 'red')
 
-    update()
+    turtle.update()
 
     for point, course in ghosts:
         if abs(pacman - point) < 20:
             return
 
-    ontimer(move, 100)
+    turtle.ontimer(move, 100)
 
 
 def change(x, y):
@@ -164,17 +164,17 @@ def change(x, y):
         aim.y = y
 
 
-setup(420, 420, 370, 0)
-hideturtle()
-tracer(False)
+turtle.setup(420, 420, 370, 0)
+turtle.hideturtle()
+turtle.tracer(False)
 writer.goto(160, 160)
 writer.color('white')
 writer.write(state['score'])
-listen()
-onkey(lambda: change(5, 0), 'Right')
-onkey(lambda: change(-5, 0), 'Left')
-onkey(lambda: change(0, 5), 'Up')
-onkey(lambda: change(0, -5), 'Down')
+turtle.listen()
+turtle.onkey(lambda: change(5, 0), 'Right')
+turtle.onkey(lambda: change(-5, 0), 'Left')
+turtle.onkey(lambda: change(0, 5), 'Up')
+turtle.onkey(lambda: change(0, -5), 'Down')
 world()
 move()
-done()
+turtle.done()
